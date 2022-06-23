@@ -11,6 +11,17 @@ Current Sentinel Login:
 username: robert
 password: sentinel
 
+to activate virtual environment use: /home/robert/Sentinel/workspace
+$ workon TF1
+The main code folder is located in /home/robert/Sentinel/workspace
+Scan_Demo.py is the most complicated program as of now and scans the surroundings while storing data about detected objects
+Model_Test_Image.py is to test the inference time of a model
+Facial_Tracking.py uses a lightweight facial detection model to move to the camera to track faces as they move
+Beginner.py is the most basic test script for the NSP32
+SpectrumMeter.py is a GUI example for the NSP32
+PanTilt.py is the library for controlling the mount
+NanoLambdaNSP32.py is the library for communicating with the NSP32
+
 ## Hardware
 ### Required Components
 - Windows Laptop
@@ -65,6 +76,46 @@ sudo reboot
 
 
 ## Setting Up Jetson Nano Python Environment
+First install pip using
+"""
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python3 get-pip.py
+$ rm get-pip.py
+
+"""
+Then install virtualenv and virtualenvwrapper
+"""
+$ sudo pip install virtualenv virtualenvwrapper
+
+"""
+
+After installation you will need to add the following lines to the bottom of the .bashrc file
+
+# virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+
+to do so you can use the nano editor
+
+$ pip install nano
+$ nano ~/.bashrc
+
+and then edit the file and make sure to save when exiting then run
+
+$ source ~./bashrc 
+
+so the changes take effect.
+
+Jetpack 4.3 comes with OpenCV and CUDA already installed and configured on the Nano. To install Tensorflow-gpu for python 3.6 on Jetpack 4.3 use the following commands
+"""
+$ sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev
+$ sudo apt-get install python3-pip
+$ sudo pip3 install -U pip
+$ sudo pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
+$ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow==1.15.2+nv20.3
+
+"""
 
 
 
@@ -73,7 +124,22 @@ sudo reboot
 
 ### Jetson Nano
 
-### Training Compute
+After TensorFlow has been installed on the system copy the Sentinel folder into your user's home directory on the Nano (eg. /home/robert) and extract the protoc .zip file into a /home/usr/Protobuf
+then navigate to /home/usr/Sentinel/models/research and run:
+
+$ protoc object_detection/protos/*.proto --python_out=.
+
+you may need to install protoc first using
+
+$ sudo apt-get install libprotobuf-dev protobuf-compiler
+
+Then run
+
+pip install .
+
+to complete the API installation. Then all of the code should be able to run without error.
+
+### Training Computer
 
 This Project used an intel Xeon CPU and P2000 GPU for model training. HiPerGator could also be used, but setting up the object detection API was not straightforward so the current
 model was trained locally. The two main packages that were used were TensorFlow-gpu 1.15 and OpenCV. The model training folder in this repository is already structured and ready for model training. It is recommended that Tensorflow 1.15 is used. If you 
