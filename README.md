@@ -58,16 +58,15 @@ wifi or by using a micro-USB to USB-A cable. From this point on this document as
 internet access in order to install python libraries to complete the software setup.
 
 The final step for initial setup is to configure the 40-pin extension of the Jetson Nano to provide UART and PWM access. To configure the pin functions run:
-
-
+```
 sudo python \opt\nvidia\jetson-io.py
-
+```
 
 Then choose "Configure 40-pin expansion header" and make sure pwm0, pwm2, and uartb are all selected. Then exit and save the changes. The system will then need to reboot 
 for the changes to take effect
-
+```
 sudo reboot
-
+```
 
 ### Connecting Peripherals
 - The camera should be connected directly to one of the MIPI CSI camera ports using its ribbon cable
