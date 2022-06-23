@@ -77,17 +77,15 @@ sudo reboot
 
 ## Setting Up Jetson Nano Python Environment
 First install pip using
-"""
+
 $ wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python3 get-pip.py
 $ rm get-pip.py
 
-"""
 Then install virtualenv and virtualenvwrapper
-"""
+
 $ sudo pip install virtualenv virtualenvwrapper
 
-"""
 
 After installation you will need to add the following lines to the bottom of the .bashrc file
 
@@ -108,14 +106,13 @@ $ source ~./bashrc
 so the changes take effect.
 
 Jetpack 4.3 comes with OpenCV and CUDA already installed and configured on the Nano. To install Tensorflow-gpu for python 3.6 on Jetpack 4.3 use the following commands
-"""
+
 $ sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev
 $ sudo apt-get install python3-pip
 $ sudo pip3 install -U pip
 $ sudo pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
 $ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow==1.15.2+nv20.3
 
-"""
 
 
 
