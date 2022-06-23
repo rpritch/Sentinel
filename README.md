@@ -59,13 +59,13 @@ internet access in order to install python libraries to complete the software se
 
 The final step for initial setup is to configure the 40-pin extension of the Jetson Nano to provide UART and PWM access. To configure the pin functions run:
 ```
-sudo python \opt\nvidia\jetson-io.py
+$ sudo python \opt\nvidia\jetson-io.py
 ```
 
 Then choose "Configure 40-pin expansion header" and make sure pwm0, pwm2, and uartb are all selected. Then exit and save the changes. The system will then need to reboot 
 for the changes to take effect
 ```
-sudo reboot
+$ sudo reboot
 ```
 
 ### Connecting Peripherals
@@ -129,7 +129,7 @@ $ sudo apt-get install libprotobuf-dev protobuf-compiler
 ```
 Then run
 ```
-pip install .
+$ pip install .
 ```
 to complete the API installation. Then all of the code should be able to run without error.
 
@@ -156,15 +156,15 @@ Once Tensorflow and OpenCV have been successfully installed to use the API you w
 the zip file to C:\Program Files\Google Protobuf. Add the path to the protobuf directory to your Path environment variable. Instructions for how to do this can be found here: https://www.computerhope.com/issues/ch000549.htm#windows10.
 Once the PATH is updated navigate to Model_Training/Tensorflow/models/research and run
 ```
-protoc object_detection/protos/*.proto --python_out=.
+$ protoc object_detection/protos/*.proto --python_out=.
 ```
 Then form within this same folder run
 ```
-pip install .
+$ pip install .
 ```
 and the base API shoud be all set to go. The last step is to add pycocotools which are used in various scripts within the API. This should be as simple as running the following command if you are using anconda package manager
 ```
-conda install pycocotools-windows (also try pip if you have trouble)
+$ conda install pycocotools-windows (also try pip if you have trouble)
 ```
 you will need to have microsoft VS build tools 2015 installed on your machine. Once this installation is complete your system should be ready to begin training models. Please refer to https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html
 for help training new models. The Tensorflow Directory is structured to match this tutorial. 
