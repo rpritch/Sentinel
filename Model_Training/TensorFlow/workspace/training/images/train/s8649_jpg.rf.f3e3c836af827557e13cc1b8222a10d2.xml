@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>s8649_jpg.rf.f3e3c836af827557e13cc1b8222a10d2.jpg</filename>
+	<path>s8649_jpg.rf.f3e3c836af827557e13cc1b8222a10d2.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>750</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bud</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>131</xmin>
+			<xmax>531</xmax>
+			<ymin>321</ymin>
+			<ymax>500</ymax>
+		</bndbox>
+	</object>
+</annotation>

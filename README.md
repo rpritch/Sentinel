@@ -38,8 +38,21 @@ SSH>>X11 and then check the "Enable X11 Forwarding" and MIT-Magic-Cookie-1. Ente
 If an error occurs you may need to adjust the display location address. From the putty terminal you should now be able to log into the jetson Nano either over
 wifi or by using a micro-USB to USB-A cable. From this point on this document assumes you are communicating with the Nano through SSH.
 
-### Connecting Peripherals
+The final step for initial setup is to configure the 40-pin extension of the Jetson Nano to provide UART and PWM access. To configure the pin functions run:
+'''
+sudo python \opt\nvidia\jetson-io.py
+'''
 
+Then choose "Configure 40-pin expansion header" and make sure pwm0, pwm2, and uartb are all selected. Then exit and save the changes. The system will then need to reboot 
+for the changes to take effect
+'''
+sudo reboot
+'''
+
+### Connecting Peripherals
+- The camera should be connected directly to one of the MIPI CSI camera ports using its ribbon cable
+- The NSP32 should be connected to Pin8 (TXD) and Pin10 (RXD) for control through UART
+- Each servo motor on the mount needs to be connected to a ground and 5V pin and then the top motor should be connected to Pin33 and the bottom motor to Pin32
 
 
 ## Setting Up Jetson Nano Python Environment

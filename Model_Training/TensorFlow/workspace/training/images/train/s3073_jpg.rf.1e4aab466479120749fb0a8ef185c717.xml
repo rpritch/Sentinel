@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>s3073_jpg.rf.1e4aab466479120749fb0a8ef185c717.jpg</filename>
+	<path>s3073_jpg.rf.1e4aab466479120749fb0a8ef185c717.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>750</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>pod</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>140</xmin>
+			<xmax>476</xmax>
+			<ymin>1</ymin>
+			<ymax>41</ymax>
+		</bndbox>
+	</object>
+</annotation>
