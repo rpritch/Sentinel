@@ -83,38 +83,36 @@ $ sudo python3 get-pip.py
 $ rm get-pip.py
 ```
 Then install virtualenv and virtualenvwrapper
-
+```
 $ sudo pip install virtualenv virtualenvwrapper
-
+````
 
 After installation you will need to add the following lines to the bottom of the .bashrc file
-
+```
 # virtualenv and virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
-
+```
 to do so you can use the nano editor
-
+```
 $ pip install nano
 $ nano ~/.bashrc
-
+```
 and then edit the file and make sure to save when exiting then run
-
+```
 $ source ~./bashrc 
-
+```
 so the changes take effect.
 
 Jetpack 4.3 comes with OpenCV and CUDA already installed and configured on the Nano. To install Tensorflow-gpu for python 3.6 on Jetpack 4.3 use the following commands
-
+```
 $ sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev
 $ sudo apt-get install python3-pip
 $ sudo pip3 install -U pip
 $ sudo pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
 $ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow==1.15.2+nv20.3
-
-
-
+```
 
 ## Tensorflow Object Detection API
 
@@ -123,17 +121,17 @@ $ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.co
 
 After TensorFlow has been installed on the system copy the Sentinel folder into your user's home directory on the Nano (eg. /home/robert) and extract the protoc .zip file into a /home/usr/Protobuf
 then navigate to /home/usr/Sentinel/models/research and run:
-
+```
 $ protoc object_detection/protos/*.proto --python_out=.
-
+```
 you may need to install protoc first using
-
+```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler
-
+```
 Then run
-
+```
 pip install .
-
+```
 to complete the API installation. Then all of the code should be able to run without error.
 
 ### Training Computer
@@ -143,13 +141,13 @@ model was trained locally. The two main packages that were used were TensorFlow-
 are using a newer version of Tensorflow (TF 2.x) you will need to download the newer version of the API here:https://github.com/tensorflow/models/tree/master/research/object_detection
 If you are configuring the API from scratch it is recommended you follow this tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/tensorflow-1.14/install.html#general-remarks
 It is also recommended that the training be performed in a conda virtual environment. You can create one using
-
+```
 conda create --name myenv
-
+```
 where myenv is the name of the new environment. To activate and deactivate environments simply use 
-
+```
 conda activate myenv  or   conda deactivate myenv
-
+```
 If you are using the Model_Training directory provided you will still need to install tensorflow-gpu 1.15 and get CUDA installed on your machine in order to use GPU or just install tensorflow 1.15
 to only use the CPU. However, model training will not be practical without using a GPU. CUDA documentation can be found:
 
@@ -158,17 +156,17 @@ https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.htm
 Once Tensorflow and OpenCV have been successfully installed to use the API you will need to download the newest release of protocol buffers from https://github.com/protocolbuffers/protobuf/releases. Then extract
 the zip file to C:\Program Files\Google Protobuf. Add the path to the protobuf directory to your Path environment variable. Instructions for how to do this can be found here: https://www.computerhope.com/issues/ch000549.htm#windows10.
 Once the PATH is updated navigate to Model_Training/Tensorflow/models/research and run
-
+```
 protoc object_detection/protos/*.proto --python_out=.
-
+```
 Then form within this same folder run
-
+```
 pip install .
-
+```
 and the base API shoud be all set to go. The last step is to add pycocotools which are used in various scripts within the API. This should be as simple as running the following command if you are using anconda package manager
-
+```
 conda install pycocotools-windows (also try pip if you have trouble)
-
+```
 you will need to have microsoft VS build tools 2015 installed on your machine. Once this installation is complete your system should be ready to begin training models. Please refer to https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html
 for help training new models. The Tensorflow Directory is structured to match this tutorial. 
 
