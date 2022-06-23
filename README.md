@@ -141,11 +141,11 @@ are using a newer version of Tensorflow (TF 2.x) you will need to download the n
 If you are configuring the API from scratch it is recommended you follow this tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/tensorflow-1.14/install.html#general-remarks
 It is also recommended that the training be performed in a conda virtual environment. You can create one using
 ```
-conda create --name myenv
+$ conda create --name myenv
 ```
 where myenv is the name of the new environment. To activate and deactivate environments simply use 
 ```
-conda activate myenv  or   conda deactivate myenv
+$ conda activate myenv  or   conda deactivate myenv
 ```
 If you are using the Model_Training directory provided you will still need to install tensorflow-gpu 1.15 and get CUDA installed on your machine in order to use GPU or just install tensorflow 1.15
 to only use the CPU. However, model training will not be practical without using a GPU. CUDA documentation can be found:
