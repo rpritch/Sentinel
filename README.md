@@ -4,6 +4,13 @@ This repository contains the relevant code for the Jetson Nano based camera syst
 This document describes how to connect and set up all of the hardware added to the system and all code required to 
 train object detection models for the current iteration of the system as of June 2022.
 
+If you run into any issues with the code provided or setting up a new Sentinel system please feel free to reach out to me at
+rpritchard@ufl.edu for help.
+
+Current Sentinel Login:
+username: robert
+password: sentinel
+
 ## Hardware
 ### Required Components
 - Windows Laptop
@@ -40,19 +47,16 @@ wifi or by using a micro-USB to USB-A cable. From this point on this document as
 internet access in order to install python libraries to complete the software setup.
 
 The final step for initial setup is to configure the 40-pin extension of the Jetson Nano to provide UART and PWM access. To configure the pin functions run:
-'''
+
 
 sudo python \opt\nvidia\jetson-io.py
 
-'''
 
 Then choose "Configure 40-pin expansion header" and make sure pwm0, pwm2, and uartb are all selected. Then exit and save the changes. The system will then need to reboot 
 for the changes to take effect
-'''
 
 sudo reboot
 
-'''
 
 ### Connecting Peripherals
 - The camera should be connected directly to one of the MIPI CSI camera ports using its ribbon cable
@@ -69,24 +73,42 @@ sudo reboot
 
 ### Jetson Nano
 
-### Training Computer
+### Training Compute
+
 This Project used an intel Xeon CPU and P2000 GPU for model training. HiPerGator could also be used, but setting up the object detection API was not straightforward so the current
-model was trained locally. The model training folder in this repository is already structured and ready for model training. It is recommended that Tensorflow 1.15 is used. If you 
+model was trained locally. The two main packages that were used were TensorFlow-gpu 1.15 and OpenCV. The model training folder in this repository is already structured and ready for model training. It is recommended that Tensorflow 1.15 is used. If you 
 are using a newer version of Tensorflow (TF 2.x) you will need to download the newer version of the API here:https://github.com/tensorflow/models/tree/master/research/object_detection
 If you are configuring the API from scratch it is recommended you follow this tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/tensorflow-1.14/install.html#general-remarks
-One note regarding the pycocotools package, if you are using anaconda as your package manager the command:
-'''
+It is also recommended that the training be performed in a conda virtual environment. You can create one using
 
-conda install pycocotools-windows (also try pip if you have trouble)
+conda create --name myenv
 
-'''
-should get around the compilation errors other techniques run into. You will still need to have VS build tools 2015 installed on your machine
+where myenv is the name of the new environment. To activate and deactivate environments simply use 
+
+conda activate myenv  or   conda deactivate myenv
+
 If you are using the Model_Training directory provided you will still need to install tensorflow-gpu 1.15 and get CUDA installed on your machine in order to use GPU or just install tensorflow 1.15
 to only use the CPU. However, model training will not be practical without using a GPU. CUDA documentation can be found:
-'''
 
 https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
 
-'''
-Once Tensorflow has been successfully installed to use the API you will need to download the newest release of protocol buffers from https://github.com/protocolbuffers/protobuf/releases. Then extract
+Once Tensorflow and OpenCV have been successfully installed to use the API you will need to download the newest release of protocol buffers from https://github.com/protocolbuffers/protobuf/releases. Then extract
 the zip file to C:\Program Files\Google Protobuf. Add the path to the protobuf directory to your Path environment variable. Instructions for how to do this can be found here: https://www.computerhope.com/issues/ch000549.htm#windows10.
+Once the PATH is updated navigate to Model_Training/Tensorflow/models/research and run
+
+protoc object_detection/protos/*.proto --python_out=.
+
+Then form within this same folder run
+
+pip install .
+
+and the base API shoud be all set to go. The last step is to add pycocotools which are used in various scripts within the API. This should be as simple as running the following command if you are using anconda package manager
+
+conda install pycocotools-windows (also try pip if you have trouble)
+
+you will need to have microsoft VS build tools 2015 installed on your machine. Once this installation is complete your system should be ready to begin training models. Please refer to https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html
+for help training new models. The Tensorflow Directory is structured to match this tutorial. 
+
+The model zoo for tensorflow 1 can be found at https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md however so far only the ssd_mobilenet_v2 has been successfully run on the Nano and all the data
+needed to train new models with this architecture is included in the Model_Training directory.
+
