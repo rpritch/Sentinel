@@ -13,14 +13,14 @@ password: sentinel
 
 to activate virtual environment use: /home/robert/Sentinel/workspace
 $ workon TF1
-The main code folder is located in /home/robert/Sentinel/workspace
-Scan_Demo.py is the most complicated program as of now and scans the surroundings while storing data about detected objects
-Model_Test_Image.py is to test the inference time of a model
-Facial_Tracking.py uses a lightweight facial detection model to move to the camera to track faces as they move
-Beginner.py is the most basic test script for the NSP32
-SpectrumMeter.py is a GUI example for the NSP32
-PanTilt.py is the library for controlling the mount
-NanoLambdaNSP32.py is the library for communicating with the NSP32
+- The main code folder is located in /home/robert/Sentinel/workspace
+- Scan_Demo.py is the most complicated program as of now and scans the surroundings while storing data about detected objects
+- Model_Test_Image.py is to test the inference time of a model
+- Facial_Tracking.py uses a lightweight facial detection model to move to the camera to track faces as they move
+- Beginner.py is the most basic test script for the NSP32
+- SpectrumMeter.py is a GUI example for the NSP32
+- PanTilt.py is the library for controlling the mount
+- NanoLambdaNSP32.py is the library for communicating with the NSP32
 
 ## Hardware
 ### Required Components
