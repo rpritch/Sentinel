@@ -77,11 +77,11 @@ sudo reboot
 
 ## Setting Up Jetson Nano Python Environment
 First install pip using
-
+```
 $ wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python3 get-pip.py
 $ rm get-pip.py
-
+```
 Then install virtualenv and virtualenvwrapper
 
 $ sudo pip install virtualenv virtualenvwrapper
