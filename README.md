@@ -36,5 +36,21 @@ and install using the .exe file. Set the location to 0.0 when prompted. The tuto
 Open a Putty terminal on your laptop (Download: https://www.putty.org/). Enter the IP address you wrote down before and then enable X11 forwarding by going to
 SSH>>X11 and then check the "Enable X11 Forwarding" and MIT-Magic-Cookie-1. Enter the X-display location of the Xming server (127.0.0.1:0.0). 
 If an error occurs you may need to adjust the display location address. From the putty terminal you should now be able to log into the jetson Nano either over
-wifi or by using a micro-USB to USB-A cable.
- 
+wifi or by using a micro-USB to USB-A cable. From this point on this document assumes you are communicating with the Nano through SSH.
+
+### Connecting Peripherals
+
+
+
+## Setting Up Jetson Nano Python Environment
+
+
+
+## Tensorflow Object Detection API
+
+
+### Jetson Nano
+
+### Training Computer
+This Project used an intel Xeon CPU and P2000 GPU for model training. HiPerGator could also be used, but setting up the object detection API was not straightforward so the current
+model was trained locally.
