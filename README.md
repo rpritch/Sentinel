@@ -41,13 +41,17 @@ internet access in order to install python libraries to complete the software se
 
 The final step for initial setup is to configure the 40-pin extension of the Jetson Nano to provide UART and PWM access. To configure the pin functions run:
 '''
+
 sudo python \opt\nvidia\jetson-io.py
+
 '''
 
 Then choose "Configure 40-pin expansion header" and make sure pwm0, pwm2, and uartb are all selected. Then exit and save the changes. The system will then need to reboot 
 for the changes to take effect
 '''
+
 sudo reboot
+
 '''
 
 ### Connecting Peripherals
@@ -72,13 +76,17 @@ are using a newer version of Tensorflow (TF 2.x) you will need to download the n
 If you are configuring the API from scratch it is recommended you follow this tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/tensorflow-1.14/install.html#general-remarks
 One note regarding the pycocotools package, if you are using anaconda as your package manager the command:
 '''
+
 conda install pycocotools-windows (also try pip if you have trouble)
+
 '''
 should get around the compilation errors other techniques run into. You will still need to have VS build tools 2015 installed on your machine
 If you are using the Model_Training directory provided you will still need to install tensorflow-gpu 1.15 and get CUDA installed on your machine in order to use GPU or just install tensorflow 1.15
 to only use the CPU. However, model training will not be practical without using a GPU. CUDA documentation can be found:
 '''
+
 https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
+
 '''
 Once Tensorflow has been successfully installed to use the API you will need to download the newest release of protocol buffers from https://github.com/protocolbuffers/protobuf/releases. Then extract
 the zip file to C:\Program Files\Google Protobuf. Add the path to the protobuf directory to your Path environment variable. Instructions for how to do this can be found here: https://www.computerhope.com/issues/ch000549.htm#windows10.
